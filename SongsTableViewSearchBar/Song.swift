@@ -6,7 +6,7 @@
 //  Copyright © 2017 C4Q . All rights reserved.
 //
 
-
+import Foundation
 
 class SongAPI: Codable {
     var song_name: String
@@ -2500,4 +2500,42 @@ class Song {
         """
         print(swift)
     }
+    
+    static var songs: [Song] = [] {
+        didSet {
+            songs.forEach{$0.printSwiftInitializer()}
+        }
+    }
+    
+    static func getSongs() {
+        let str = "http://billboard.modulo.site/search/song?q=love"
+        guard let url = URL(string: str) else {
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url){(data, response, error) in
+            guard let data = data else {
+                return
+            }
+            guard let _ = response else {
+                return
+            }
+            if let _ = error {
+                return
+            }
+            var songs: [Song] = []
+            do {
+                let apiSongs = try JSONDecoder().decode([SongAPI].self, from: data)
+                songs = apiSongs.map{Song(from: $0)}
+            }
+            catch {
+                print("Whoops")
+            }
+            DispatchQueue.main.async {
+                self.songs = songs
+            }
+        }
+        session.resume()
+    }
+    
+    
 }
