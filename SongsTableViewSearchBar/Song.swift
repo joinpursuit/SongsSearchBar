@@ -25,6 +25,7 @@ class Song {
         self.name = name
         self.artist = artist
     }
+    
     static let loveSongs = [
         Song(name: "Walkin' In The Rain With The One I Love", artist: "Love Unlimited"),
         Song(name: "Love Theme From The Godfather (Speak Softly Love)", artist: "Andy Williams"),
@@ -2539,3 +2540,4 @@ class Song {
     
     
 }
+
