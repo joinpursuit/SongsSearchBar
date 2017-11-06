@@ -16,6 +16,8 @@
 - Create scope buttons called artist and title.
 - Allow the user to search based on artist and song depending on which scope button was selected.
 
+![](https://media.giphy.com/media/xUOxfkpNxGMCEwQi3u/giphy.gif)
+
 ## Level 4 
 
 - Show a message in the tableview when there are no search results found.
