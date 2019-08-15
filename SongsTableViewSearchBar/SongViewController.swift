@@ -29,7 +29,6 @@ class SongViewController: UIViewController, UITableViewDataSource {
                 let currentScopeIndex = search.selectedScopeButtonIndex
                 switch scopTitles[currentScopeIndex]{
                     
-                    tableView.keyboardDismissMode
                 case "SongName":
                     let results =  music.filter{$0.name.lowercased().contains(searchString.lowercased())}
                     if results.count == 0 {
