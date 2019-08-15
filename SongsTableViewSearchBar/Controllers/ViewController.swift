@@ -9,13 +9,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     let songs = Song.loveSongs
-    
     
     var searchString: String? = nil {
         didSet {
@@ -38,9 +37,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
                 
                 switch scopeTitles[currentScopeIndex] {
                 case "Songs":
-                    return songs.filter{$0.name.contains(searchString.lowercased())}
+                    return songs.filter{$0.name.lowercased().contains(searchString.lowercased())}
                 case "Artists":
-                    return songs.filter{$0.artist.contains(searchString.lowercased())}
+                    return songs.filter{$0.artist.lowercased().contains(searchString.lowercased())}
                 default:
                     return songs
                 }
@@ -57,6 +56,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         
     }
     
@@ -96,11 +96,11 @@ class ViewController: UIViewController, UISearchBarDelegate {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        return songSearchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let song = songs[indexPath.row]
+        let song = songSearchResults[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
         
@@ -113,7 +113,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchString = searchBar.text
+    }
+    
+}
 
 
 
