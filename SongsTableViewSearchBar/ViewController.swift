@@ -52,15 +52,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = songTableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
-        cell.textLabel?.text = songData[indexPath.row].name
-        cell.detailTextLabel?.text = songData[indexPath.row].artist
+        cell.textLabel?.text = searchBarResults[indexPath.row].name
+        cell.detailTextLabel?.text = searchBarResults[indexPath.row].artist
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyBoard.instantiateViewController(withIdentifier: "SongDetailViewController") as? SongDetailViewController {
-            viewController.song = songData[indexPath.row]
+            viewController.song = searchBarResults[indexPath.row]
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
