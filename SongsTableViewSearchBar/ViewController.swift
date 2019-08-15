@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
    
     let songData = Song.loveSongs
     
@@ -24,9 +24,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let currentScopeIndex = songSearchBar.selectedScopeButtonIndex
                 switch scopeTitles[currentScopeIndex] {
                 case "Song":
-                    return songData.filter{$0.name.contains(searchString.lowercased())}
+                    return songData.filter{$0.name.lowercased().contains(searchString)}
                 case "Artist":
-                    return songData.filter{$0.artist.contains(searchString.lowercased())}
+                    return songData.filter{$0.artist.lowercased().contains(searchString)}
                 default:
                     return songData
                 }
@@ -64,6 +64,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchString = searchBar.text?.lowercased()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,10 +84,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 }
 
-extension ViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchString = searchBar.text
-    }
-}
+//extension ViewController: UISearchBarDelegate {
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        searchString = searchBar.text?.lowercased()
+//    }
+//}
 
