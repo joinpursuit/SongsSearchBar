@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pAf-10-MxN">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Pr-Po-kmB">
-                                <rect key="frame" x="20" y="144" width="374" height="718"/>
+                                <rect key="frame" x="20" y="188" width="374" height="674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songCell" textLabel="9vZ-tY-m2D" detailTextLabel="fNZ-Qp-D6y" style="IBUITableViewCellStyleSubtitle" id="ilC-vr-eeV">
@@ -49,7 +49,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-2e-7LH">
-                                <rect key="frame" x="20" y="44" width="374" height="100"/>
+                                <rect key="frame" x="20" y="88" width="374" height="100"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Song</string>
@@ -69,6 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oeB-dJ-Onj"/>
                     <connections>
                         <outlet property="songSearchBar" destination="6H6-2e-7LH" id="mAr-f1-aRL"/>
                         <outlet property="songTableView" destination="6Pr-Po-kmB" id="QJs-dy-kTh"/>
@@ -76,12 +77,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="118.52678571428571"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="118.52678571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--SongDetailViewController-->
         <scene sceneID="lgK-r4-wFM">
             <objects>
-                <viewController id="GQZ-3a-r0g" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SongDetailViewController" title="SongDetailViewController" id="GQZ-3a-r0g" customClass="SongDetailViewController" customModule="SongsTableViewSearchBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SFK-J8-9DP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,10 +124,33 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yqQ-ll-HfE"/>
                     </view>
+                    <connections>
+                        <outlet property="artistNameOutlet" destination="xyC-UY-jEN" id="dgg-k8-bJy"/>
+                        <outlet property="songImageOutlet" destination="eRg-aK-xI3" id="brI-xX-Ml9"/>
+                        <outlet property="songNameOutlet" destination="03d-Wj-OpR" id="gFc-gC-RXx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RqS-D5-hGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="805.79710144927537" y="129.91071428571428"/>
+            <point key="canvasLocation" x="1715.9420289855075" y="129.91071428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BOk-kB-PDm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pAf-10-MxN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xZp-as-KqH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HAI-PD-kPi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1x-jQ-3I3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="118.52678571428571"/>
         </scene>
     </scenes>
 </document>
