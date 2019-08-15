@@ -14,6 +14,8 @@ class SongViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var search: UISearchBar!
     @IBOutlet weak var message: UILabel!
     
+    
+    
     var music = Song.loveSongs
     var personSearchResults: [Song] {
         get {
@@ -33,6 +35,7 @@ class SongViewController: UIViewController, UITableViewDataSource {
                     let results =  music.filter{$0.name.lowercased().contains(searchString.lowercased())}
                     if results.count == 0 {
                         message.text = "No results found"
+                        search.resignFirstResponder()
                         return []
                     } else {
                         message.text = ""
@@ -43,6 +46,7 @@ class SongViewController: UIViewController, UITableViewDataSource {
                     let results =  music.filter{$0.name.lowercased().contains(searchString.lowercased())}
                     if results.count == 0 {
                         message.text = "No results found"
+                        search.resignFirstResponder()
                         return []
                     } else {
                         message.text = ""
