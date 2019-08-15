@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Pr-Po-kmB">
-                                <rect key="frame" x="20" y="92" width="374" height="770"/>
+                                <rect key="frame" x="20" y="144" width="374" height="718"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songCell" textLabel="9vZ-tY-m2D" detailTextLabel="fNZ-Qp-D6y" style="IBUITableViewCellStyleSubtitle" id="ilC-vr-eeV">
@@ -49,7 +49,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-2e-7LH">
-                                <rect key="frame" x="20" y="44" width="374" height="48"/>
+                                <rect key="frame" x="20" y="44" width="374" height="100"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Song</string>
@@ -64,12 +64,15 @@
                             <constraint firstItem="6Pr-Po-kmB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ChT-br-1oh"/>
                             <constraint firstItem="6Pr-Po-kmB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KLC-P4-cfj"/>
                             <constraint firstItem="6Pr-Po-kmB" firstAttribute="top" secondItem="6H6-2e-7LH" secondAttribute="bottom" id="Kpf-Gb-tru"/>
-                            <constraint firstItem="6Pr-Po-kmB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="PVa-ij-uLi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6H6-2e-7LH" secondAttribute="trailing" constant="20" id="V7T-Pz-KDJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Pr-Po-kmB" secondAttribute="trailing" constant="20" id="hmg-ra-Zr2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="songSearchBar" destination="6H6-2e-7LH" id="mAr-f1-aRL"/>
+                        <outlet property="songTableView" destination="6Pr-Po-kmB" id="QJs-dy-kTh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

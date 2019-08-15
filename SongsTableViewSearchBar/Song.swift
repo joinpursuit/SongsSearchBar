@@ -25,7 +25,8 @@ class Song {
         self.name = name
         self.artist = artist
     }
-    static let loveSongs = [
+    static let loveSongs: [Song] = [loveSongs1,loveSongs2].flatMap{$0}
+    private static let loveSongs1 = [
         Song(name: "Walkin' In The Rain With The One I Love", artist: "Love Unlimited"),
         Song(name: "Love Theme From The Godfather (Speak Softly Love)", artist: "Andy Williams"),
         Song(name: "Long Haired Lover From Liverpool", artist: "Little Jimmy Osmond with The Mike Curb Congregation"),
@@ -1269,7 +1270,8 @@ class Song {
         Song(name: "Love Me Again", artist: "Rita Coolidge"),
         Song(name: "Part-Time Love", artist: "Elton John"),
         Song(name: "A Little More Love", artist: "Olivia Newton-John"),
-        Song(name: "Lotta Love", artist: "Nicolette Larson"),
+        Song(name: "Lotta Love", artist: "Nicolette Larson")]
+    private static let loveSongs2 = [
         Song(name: "The Wedding Song (There Is Love)", artist: "Mary Macgregor"),
         Song(name: "Love Don't Live Here Anymore", artist: "Rose Royce"),
         Song(name: "Lost In Your Love", artist: "John Paul Young"),
