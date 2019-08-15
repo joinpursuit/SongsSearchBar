@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +23,32 @@ class ViewController: UIViewController {
         }
     }
     
-
+    var songSearchResults: [Song] {
+        get {
+            guard let searchString = searchString else {
+                return songs
+            }
+            
+            guard searchString != "" else {
+                return songs
+            }
+            
+            if let scopeTitles = searchBar.scopeButtonTitles {
+                let currentScopeIndex = searchBar.selectedScopeButtonIndex
+                
+                switch scopeTitles[currentScopeIndex] {
+                case "Songs":
+                    return songs.filter{$0.name.contains(searchString.lowercased())}
+                case "Artists":
+                    return songs.filter{$0.artist.contains(searchString.lowercased())}
+                default:
+                    return songs
+                }
+                
+            }
+            return songs
+        }
+    }
     
     
     
