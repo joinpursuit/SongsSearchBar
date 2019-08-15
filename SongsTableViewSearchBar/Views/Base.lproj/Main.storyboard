@@ -70,6 +70,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="edY-PB-m7j"/>
                     <connections>
+                        <outlet property="searchBar" destination="FV2-7d-wZJ" id="Gnn-XT-d58"/>
                         <outlet property="tableView" destination="3je-ZD-Y5s" id="7NQ-sJ-6qM"/>
                     </connections>
                 </viewController>
