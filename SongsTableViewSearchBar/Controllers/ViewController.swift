@@ -10,7 +10,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
+    let songs = Song.loveSongs
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,11 +36,18 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return songs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      return UITableViewCell()
+        let song = songs[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
+        
+        cell.textLabel?.text = song.name
+        cell.detailTextLabel?.text = song.artist
+        
+        return cell
     }
     
 }
