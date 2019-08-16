@@ -13,6 +13,7 @@
 		54DF90511FB02DBB00B228CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54DF90501FB02DBB00B228CF /* Assets.xcassets */; };
 		54DF90541FB02DBB00B228CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DF90521FB02DBB00B228CF /* LaunchScreen.storyboard */; };
 		54DF905C1FB02F3E00B228CF /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DF905B1FB02F3E00B228CF /* Song.swift */; };
+		FC3793B22305F63A00C8D696 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3793B12305F63A00C8D696 /* SongDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		54DF90531FB02DBB00B228CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54DF90551FB02DBB00B228CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54DF905B1FB02F3E00B228CF /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		FC3793B12305F63A00C8D696 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +58,11 @@
 		54DF90481FB02DBB00B228CF /* SongsTableViewSearchBar */ = {
 			isa = PBXGroup;
 			children = (
-				54DF90491FB02DBB00B228CF /* AppDelegate.swift */,
 				54DF904B1FB02DBB00B228CF /* ViewController.swift */,
-				54DF905B1FB02F3E00B228CF /* Song.swift */,
+				FC3793B12305F63A00C8D696 /* SongDetailViewController.swift */,
 				54DF904D1FB02DBB00B228CF /* Main.storyboard */,
+				54DF905B1FB02F3E00B228CF /* Song.swift */,
+				54DF90491FB02DBB00B228CF /* AppDelegate.swift */,
 				54DF90501FB02DBB00B228CF /* Assets.xcassets */,
 				54DF90521FB02DBB00B228CF /* LaunchScreen.storyboard */,
 				54DF90551FB02DBB00B228CF /* Info.plist */,
@@ -141,6 +144,7 @@
 			files = (
 				54DF905C1FB02F3E00B228CF /* Song.swift in Sources */,
 				54DF904C1FB02DBB00B228CF /* ViewController.swift in Sources */,
+				FC3793B22305F63A00C8D696 /* SongDetailViewController.swift in Sources */,
 				54DF904A1FB02DBB00B228CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
