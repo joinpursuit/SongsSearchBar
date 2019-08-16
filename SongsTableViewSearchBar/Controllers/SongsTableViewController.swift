@@ -10,17 +10,62 @@ import UIKit
 
 class SongsTableViewController: UITableViewController {
 
-    
     @IBOutlet weak var searchBarOutlet: UISearchBar!
     
-    var song = Song.loveSongs 
+    var song = Song.loveSongs
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBarOutlet.delegate = self
     }
 
-    // MARK: - Table view data source
+    var songSearchResult:[Song] {
+        get {
+            guard let searchString = searchString else {
+                return song
+            }
+            guard searchString != "" else {
+                return song
+            }
+            if let scopeTitles = searchBarOutlet.scopeButtonTitles {
+                let currentScopeIndex = searchBarOutlet.selectedScopeButtonIndex
+                switch scopeTitles[currentScopeIndex] {
+                case "Songs":
+                    let songResults = song.filter{$0.name.lowercased().contains(searchString.lowercased())}
+                    if songResults.count > 0 {
+                        return songResults
+                    }else{
+                        showNotFoundAlert(titleType: "Song")
+                    }
+                case "Artists":
+                    let artistResults = song.filter{$0.artist.lowercased().contains(searchString.lowercased())}
+                    if artistResults.count > 0 {
+                        return artistResults
+                    }else{
+                        showNotFoundAlert(titleType: "Artist")
+                    }
+                default:
+                    return song
+                }
+            }
+            return song
+        }
+    }
+    
+    func showNotFoundAlert(titleType: String) -> Void {
+        let alert = UIAlertController(title: "\u{1F5E3} \(titleType) not found!", message: "Please try again", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true)
+    }
+    
+    var searchString: String? = nil {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+
+     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -28,66 +73,27 @@ class SongsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return song.count
+        return songSearchResult.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "songTVC", for: indexPath) as? SongsTableViewCell {
+            cell.songNameLabel?.text = songSearchResult[indexPath.row].name
+            cell.bandLabel?.text = songSearchResult[indexPath.row].artist
+            return cell
+        }
+        return UITableViewCell()
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension SongsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchString = searchBar.text
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchString = searchBar.text
+    }
     
 }
