@@ -1,10 +1,9 @@
 //
-//  Song.swift
+//  SongsData.swift
 //  SongsTableViewSearchBar
 //
-//  Created by C4Q  on 11/6/17.
-//  Copyright © 2017 C4Q . All rights reserved.
-//
+//  Created by Mariel Hoepelman on 8/15/19.
+//  Copyright © 2019 C4Q . All rights reserved.
 
 import Foundation
 
