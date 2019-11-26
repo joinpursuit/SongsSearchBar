@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum Scope{
+    case title
+    case artist
+}
+
 class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -21,9 +26,16 @@ class MainViewController: UIViewController {
     
     var userQuery = "" {
         didSet{
-            listOfSongs = Song.loveSongs.filter{ $0.name.lowercased().contains(userQuery.lowercased()) }
+            switch currentScope{
+            case .artist:
+                listOfSongs = Song.loveSongs.filter{ $0.artist.lowercased().contains(userQuery.lowercased()) }
+            case .title:
+                listOfSongs = Song.loveSongs.filter{ $0.name.lowercased().contains(userQuery.lowercased()) }
+            }
         }
     }
+    
+    var currentScope: Scope = .artist
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,5 +90,16 @@ extension MainViewController: UISearchBarDelegate{
             return
         }
         userQuery = searchText
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope{
+        case 0:
+            currentScope = Scope.artist
+        case 1:
+            currentScope = Scope.title
+        default:
+            break
+        }
     }
 }
