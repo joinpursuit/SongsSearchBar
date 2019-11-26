@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detailed Song View Controller-->
+        <scene sceneID="odM-bN-9OE">
+            <objects>
+                <viewController storyboardIdentifier="detailedSongVC" id="Dab-1x-EBI" customClass="DetailedSongViewController" customModule="SongsTableViewSearchBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gjo-aJ-aNi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7iC-Bm-AYj" userLabel="defaultImage">
+                                <rect key="frame" x="0.0" y="88" width="414" height="313.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDm-Tz-iX4" userLabel="songName">
+                                <rect key="frame" x="20" y="421.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjV-b4-FEE" userLabel="artistName">
+                                <rect key="frame" x="20" y="462" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h5z-XD-Vyy" firstAttribute="trailing" secondItem="7iC-Bm-AYj" secondAttribute="trailing" id="2Wp-GG-yT4"/>
+                            <constraint firstItem="7iC-Bm-AYj" firstAttribute="leading" secondItem="h5z-XD-Vyy" secondAttribute="leading" id="6MS-AD-naS"/>
+                            <constraint firstItem="h5z-XD-Vyy" firstAttribute="trailing" secondItem="WjV-b4-FEE" secondAttribute="trailing" constant="20" id="C3P-Nu-CMV"/>
+                            <constraint firstItem="h5z-XD-Vyy" firstAttribute="trailing" secondItem="UDm-Tz-iX4" secondAttribute="trailing" constant="20" id="R0x-j0-Pll"/>
+                            <constraint firstItem="7iC-Bm-AYj" firstAttribute="height" secondItem="Gjo-aJ-aNi" secondAttribute="height" multiplier="0.35" id="cSs-Vk-dBf"/>
+                            <constraint firstItem="WjV-b4-FEE" firstAttribute="top" secondItem="UDm-Tz-iX4" secondAttribute="bottom" constant="20" id="hTt-De-daM"/>
+                            <constraint firstItem="UDm-Tz-iX4" firstAttribute="top" secondItem="7iC-Bm-AYj" secondAttribute="bottom" constant="20" id="mSi-Fj-6pR"/>
+                            <constraint firstItem="UDm-Tz-iX4" firstAttribute="leading" secondItem="h5z-XD-Vyy" secondAttribute="leading" constant="20" id="tac-Zh-icg"/>
+                            <constraint firstItem="WjV-b4-FEE" firstAttribute="leading" secondItem="h5z-XD-Vyy" secondAttribute="leading" constant="20" id="tbA-K5-N7Q"/>
+                            <constraint firstItem="7iC-Bm-AYj" firstAttribute="top" secondItem="h5z-XD-Vyy" secondAttribute="top" id="u7l-L7-hSV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h5z-XD-Vyy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bcL-lc-Doc"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="WjV-b4-FEE" id="AUS-r3-J1X"/>
+                        <outlet property="defaultImage" destination="7iC-Bm-AYj" id="4LR-Ec-wMN"/>
+                        <outlet property="songName" destination="UDm-Tz-iX4" id="GO9-NP-4zZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bd5-n0-737" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="125.89285714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZzM-6c-xg5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bfO-tK-FeP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F5J-vF-lik">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dab-1x-EBI" kind="relationship" relationship="rootViewController" id="1j9-Ni-YbQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kxk-d6-bvd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="125.89285714285714"/>
+        </scene>
+    </scenes>
+</document>
