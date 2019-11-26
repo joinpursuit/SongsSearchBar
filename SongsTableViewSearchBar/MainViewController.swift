@@ -15,9 +15,11 @@ enum Scope{
 
 class MainViewController: UIViewController {
 
+    // MARK: Outlets of MainViewController
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // MARK: Properties of MainViewController
     var listOfSongs: [Song] = [] {
         didSet{
             tableView.reloadData()
@@ -32,11 +34,16 @@ class MainViewController: UIViewController {
             case .title:
                 listOfSongs = Song.loveSongs.filter{ $0.name.lowercased().contains(userQuery.lowercased()) }
             }
+            if listOfSongs.isEmpty{
+                listOfSongs.append(Song(name: "No Search Results Found", artist:""))
+                searchBar.resignFirstResponder()
+            }
         }
     }
     
     var currentScope: Scope = .artist
     
+    // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -45,7 +52,7 @@ class MainViewController: UIViewController {
         setUp()
         
     }
-
+    // MARK: Helper Methods
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,7 +63,7 @@ class MainViewController: UIViewController {
     }
 
 }
-
+// MARK: TableView Data Source
 extension MainViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let xCell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
@@ -70,15 +77,19 @@ extension MainViewController: UITableViewDataSource{
     }
 }
 
+// MARK: TableView Delegate
 extension MainViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let secondSB = UIStoryboard(name: "SecondStoryboard", bundle: nil)
-        let detailedSongVC = secondSB.instantiateViewController(withIdentifier: "detailedSongVC") as! DetailedSongViewController
+        guard let detailedSongVC = secondSB.instantiateViewController(withIdentifier: "detailedSongVC") as? DetailedSongViewController else{
+            fatalError("Could not access instance of DetailedSongViewController ")
+        }
         detailedSongVC.selectedSong = listOfSongs[indexPath.row]
         navigationController?.pushViewController(detailedSongVC, animated: true)
     }
 }
 
+// MARK: SearchBar Delegate
 extension MainViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
