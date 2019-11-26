@@ -19,6 +19,12 @@ class MainViewController: UIViewController {
         }
     }
     
+    var userQuery = "" {
+        didSet{
+            listOfSongs = Song.loveSongs.filter{ $0.name.lowercased().contains(userQuery.lowercased()) }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -71,7 +77,6 @@ extension MainViewController: UISearchBarDelegate{
             listOfSongs = Song.loveSongs
             return
         }
-        
-        
+        userQuery = searchText
     }
 }
