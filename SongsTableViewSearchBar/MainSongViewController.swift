@@ -8,12 +8,12 @@
 
 import UIKit
 
+enum SearchScope {
+    case song // name of the song
+    case artist // artist name
+}
+
 class MainSongViewController: UIViewController {
-    
-    enum SearchScope {
-        case name // name of the song
-        case artist // artist name
-    }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -25,12 +25,12 @@ class MainSongViewController: UIViewController {
         }
     }
     
-    var currentScope = SearchScope.name
+    var currentScope = SearchScope.song
     
     var searchQuery = "" {
         didSet {
             switch currentScope {
-            case .name:
+            case .song:
                 songs = Song.loveSongs.filter { $0.name.lowercased().contains(searchQuery.lowercased())}
             case .artist:
                 songs = Song.loveSongs.filter { $0.artist.lowercased().contains(searchQuery.lowercased())}
@@ -51,7 +51,6 @@ class MainSongViewController: UIViewController {
     }
     
     func filterSongsName(for searchText: String) {
-        // we guarding against and empty search query
         guard !searchText.isEmpty else { return }
         songs = Song.loveSongs.filter{ $0.name.lowercased().contains(searchText.lowercased())}
     }
@@ -73,10 +72,10 @@ extension MainSongViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
         
-        let song = songs[indexPath.row]
+        let song1 = songs[indexPath.row]
         
-        cell.textLabel?.text = song.name
-        cell.detailTextLabel?.text = song.artist
+        cell.textLabel?.text = song1.name
+        cell.detailTextLabel?.text = song1.artist
         
         return cell
     }
@@ -86,12 +85,8 @@ extension MainSongViewController: UITableViewDataSource {
 extension MainSongViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
-        guard let searchText = searchBar.text else {
-            return
-        }
-        filterSongsName(for: searchText)
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
             loadData()
@@ -102,7 +97,7 @@ extension MainSongViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         switch selectedScope {
         case 0:
-            currentScope = SearchScope.name
+            currentScope = SearchScope.song
         case 1:
             currentScope = SearchScope.artist
         default:
