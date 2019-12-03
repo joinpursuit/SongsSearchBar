@@ -34,10 +34,11 @@ class ViewController: UIViewController {
                 songs = Song.loveSongs.filter{$0.artist.lowercased().contains(query.lowercased())}
             case .title:
                 songs = Song.loveSongs.filter{$0.name.lowercased().contains(query.lowercased())}
-//            default:
-//                <#code#>
-//            }
             
+            }
+            if songs.isEmpty{
+                songs.append(Song(name: "Query not found", artist: ""))
+                searchBar.resignFirstResponder()
             }
         }
     }
