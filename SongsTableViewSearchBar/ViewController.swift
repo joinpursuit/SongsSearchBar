@@ -11,10 +11,17 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var songs = [Song](){
         didSet{
             tableView.reloadData()
+        }
+    }
+    
+    var query = ""{
+        didSet{
+            songs = Song.loveSongs.filter{$0.name.lowercased().contains(query.lowercased())}
         }
     }
     
@@ -23,6 +30,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         loadData()
         tableView.dataSource = self
+        searchBar.delegate = self
         
     }
     
@@ -38,6 +46,22 @@ class ViewController: UIViewController {
         songs = Song.loveSongs
     }
     
+}
+
+extension ViewController:UISearchBarDelegate{
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            //searchText is empty here so we get back all the original headlines using our loadData method
+            loadData()
+            return
+        }
+        query = searchText
+    }
 }
 
 extension ViewController:UITableViewDataSource{
