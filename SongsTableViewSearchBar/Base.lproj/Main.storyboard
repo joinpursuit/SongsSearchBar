@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SongsTableViewSearchBar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TableViewController" customModule="SongsTableViewSearchBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zZA-f7-ahZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="191" width="414" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Love Song Cell" textLabel="ZuC-a5-Zjk" detailTextLabel="aNB-gK-4rN" style="IBUITableViewCellStyleSubtitle" id="XGh-ym-inD">
@@ -43,21 +43,36 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bL0-yL-DVV" kind="show" id="fF1-5e-YWW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OyB-nm-1mK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="103"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Artist</string>
+                                    <string>Song</string>
+                                </scopeButtonTitles>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="OyB-nm-1mK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7ET-e4-Dht"/>
                             <constraint firstItem="zZA-f7-ahZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BSG-uA-BkN"/>
+                            <constraint firstItem="OyB-nm-1mK" firstAttribute="trailing" secondItem="zZA-f7-ahZ" secondAttribute="trailing" id="Fou-WU-V35"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zZA-f7-ahZ" secondAttribute="bottom" id="Gz9-kd-4se"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zZA-f7-ahZ" secondAttribute="trailing" id="PqR-cd-t6F"/>
-                            <constraint firstItem="zZA-f7-ahZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QMu-bP-1aO"/>
+                            <constraint firstItem="zZA-f7-ahZ" firstAttribute="top" secondItem="OyB-nm-1mK" secondAttribute="bottom" id="QMu-bP-1aO"/>
+                            <constraint firstItem="OyB-nm-1mK" firstAttribute="leading" secondItem="zZA-f7-ahZ" secondAttribute="leading" id="QYD-h8-rTK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="7ug-eu-mZj"/>
                     <connections>
+                        <outlet property="searchBar" destination="OyB-nm-1mK" id="EFO-iI-7gW"/>
                         <outlet property="tableView" destination="zZA-f7-ahZ" id="HBH-uk-ku2"/>
                     </connections>
                 </viewController>
@@ -82,6 +97,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pw-Pf-z82" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="jk7-ec-M7M">
+            <objects>
+                <viewController id="bL0-yL-DVV" customClass="DetailViewController" customModule="SongsTableViewSearchBar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XwA-Az-TVg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUB-MK-abe">
+                                <rect key="frame" x="20" y="239.5" width="394" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eof-nn-tYn">
+                                <rect key="frame" x="20" y="295.5" width="394" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eof-nn-tYn" firstAttribute="centerY" secondItem="XwA-Az-TVg" secondAttribute="centerY" multiplier="0.7" id="8O2-fi-hJk"/>
+                            <constraint firstItem="dUB-MK-abe" firstAttribute="leading" secondItem="qTO-nr-AMl" secondAttribute="leading" constant="20" id="SWQ-2G-GEI"/>
+                            <constraint firstItem="qTO-nr-AMl" firstAttribute="trailing" secondItem="dUB-MK-abe" secondAttribute="trailing" id="UZz-5F-M0Q"/>
+                            <constraint firstItem="eof-nn-tYn" firstAttribute="leading" secondItem="dUB-MK-abe" secondAttribute="leading" id="YmP-m8-N2m"/>
+                            <constraint firstItem="eof-nn-tYn" firstAttribute="trailing" secondItem="dUB-MK-abe" secondAttribute="trailing" id="Zec-zN-wRs"/>
+                            <constraint firstItem="dUB-MK-abe" firstAttribute="bottom" secondItem="eof-nn-tYn" secondAttribute="top" constant="-20" id="ahZ-j6-Rgi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qTO-nr-AMl"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="w7i-5o-tNi"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="dUB-MK-abe" id="NUC-c7-KYi"/>
+                        <outlet property="songLabel" destination="eof-nn-tYn" id="X87-Z1-5zc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ydt-3c-4h1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="114"/>
         </scene>
     </scenes>
 </document>
