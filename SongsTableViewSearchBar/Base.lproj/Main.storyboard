@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +12,78 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SongsTableViewSearchBar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5Gm-3G-dPe">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kWx-Ml-Fd3"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uSm-j1-Qr2">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Song Cell" textLabel="pPE-SF-lG1" detailTextLabel="Lde-Fz-DQq" style="IBUITableViewCellStyleSubtitle" id="OTZ-0e-tFU">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OTZ-0e-tFU" id="JUJ-hn-NMe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pPE-SF-lG1">
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lde-Fz-DQq">
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uSm-j1-Qr2" secondAttribute="bottom" id="AaS-N5-0Ua"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uSm-j1-Qr2" secondAttribute="trailing" id="XRj-nc-OOK"/>
+                            <constraint firstItem="uSm-j1-Qr2" firstAttribute="top" secondItem="5Gm-3G-dPe" secondAttribute="bottom" id="Xvu-Md-0kf"/>
+                            <constraint firstItem="5Gm-3G-dPe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cBB-5f-UMq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Gm-3G-dPe" secondAttribute="trailing" id="ovM-T6-nfI"/>
+                            <constraint firstItem="uSm-j1-Qr2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qX4-Xt-PE5"/>
+                            <constraint firstItem="5Gm-3G-dPe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vwb-H4-oNG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="5Gm-3G-dPe" id="SYL-CN-GqQ"/>
+                        <outlet property="searchDisplayController" destination="2V9-kG-jAW" id="FPy-5i-RMT"/>
+                        <outlet property="tableView" destination="uSm-j1-Qr2" id="Eho-Jw-dIu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="2V9-kG-jAW">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="8TP-Xl-OjU"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="fUl-8w-38I"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="ukb-kH-KM3"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="i5X-lt-ibm"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
+            <point key="canvasLocation" x="49" y="153"/>
         </scene>
     </scenes>
 </document>
